@@ -1,0 +1,5 @@
+Documento de comandos linux
+Documento de comandos git
+Proyecto con polimorfismo
+Proyecto Singleton
+Proyecto inyección de dependencias
