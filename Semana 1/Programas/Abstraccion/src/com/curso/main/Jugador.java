@@ -6,6 +6,7 @@ public class Jugador extends Entidad{
 		super(hp, atk, def);
 	}
 	
+	// Métodos de mejora de estadísticas, son aleatorios del 0 al 5
 	void mejorarAtaque() {
 		atk += (int)((Math.random() * 5));
 		System.out.println("Ataque aumentado a "+atk);
@@ -16,6 +17,7 @@ public class Jugador extends Entidad{
 		System.out.println("Defensa aumentada a "+def);
 	}
 	
+	// Mensajes específicos del jugador	
 	@Override
 	void presentacion() {
 		System.out.println("¡Que comience el combate!");

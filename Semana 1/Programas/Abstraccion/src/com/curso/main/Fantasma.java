@@ -1,5 +1,6 @@
 package com.curso.main;
 
+// Contiene los mensajes específicos del fantasma
 public class Fantasma extends Enemigo{
 	
 	public Fantasma(int hp, int atk, int def) {
@@ -7,7 +8,7 @@ public class Fantasma extends Enemigo{
 	}	
 	
 	@Override
-	void decirProximoMovimiento() {
+	int decirProximoMovimiento() {
 		siguienteMovimiento = (int)((Math.random() * 3)+1);
 		
 		switch (siguienteMovimiento) {
@@ -24,6 +25,7 @@ public class Fantasma extends Enemigo{
 			throw new IllegalArgumentException("Unexpected value: " + siguienteMovimiento);
 		}
 		
+		return siguienteMovimiento;
 	}
 	
 	@Override
@@ -37,20 +39,4 @@ public class Fantasma extends Enemigo{
 		
 	}
 	
-	@Override
-	int realizarMovimiento(Jugador jugador) {
-		switch (siguienteMovimiento) {
-		case 1: 
-			return calcularAtaque();
-		case 2: 
-			return calcularDefensa();
-		case 3: 
-			me.ejecutaMovimientoEspecial(jugador);
-			return calcularAtaque();
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + siguienteMovimiento);
-		}
-		
-	}
-
 }
