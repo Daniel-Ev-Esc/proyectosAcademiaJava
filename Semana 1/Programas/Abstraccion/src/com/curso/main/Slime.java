@@ -13,13 +13,13 @@ public class Slime extends Enemigo{
 		
 		switch (siguienteMovimiento) {
 		case 1: 
-			System.out.println("El slime se prepara para saltar");
+			System.out.println("El Slime se prepara para saltar");
 			break;
 		case 2: 
-			System.out.println("El slime parece tenso");
+			System.out.println("El Slime parece tenso");
 			break;
 		case 3: 
-			System.out.println("El slime concentra su acido");
+			System.out.println("El Slime concentra su acido");
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + siguienteMovimiento);
@@ -30,12 +30,12 @@ public class Slime extends Enemigo{
 	
 	@Override
 	void presentacion() {
-		System.out.println("¡El slime sale de los arbustos!");
+		System.out.println("¡El Slime sale de los arbustos!");
 	}
 	
 	@Override
 	void derrota() {
-		System.out.println("El slime huye hacia una cueva...");
+		System.out.println("El Slime huye hacia una cueva...");
 		
 	}
 

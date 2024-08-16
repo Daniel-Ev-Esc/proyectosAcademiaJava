@@ -13,10 +13,10 @@ public class Dragon extends Enemigo{
 		
 		switch (siguienteMovimiento) {
 		case 1: 
-			System.out.println("El dragon te mira fijamente");
+			System.out.println("El Dragon te mira fijamente");
 			break;
 		case 2: 
-			System.out.println("El dragon permanece inmovil");
+			System.out.println("El Dragon permanece inmovil");
 			break;
 		case 3: 
 			System.out.println("El ambiente se siente mas calido");
@@ -30,12 +30,12 @@ public class Dragon extends Enemigo{
 	
 	@Override
 	void presentacion() {
-		System.out.println("¡Encuentras al dragon de la mazmorra!");
+		System.out.println("¡Encuentras al Dragon de la mazmorra!");
 	}
 	
 	@Override
 	void derrota() {
-		System.out.println("El dragon reconoce tu fuerza y se prepara para dormir...");
+		System.out.println("El Dragon reconoce tu fuerza y se prepara para dormir...");
 		
 	}
 

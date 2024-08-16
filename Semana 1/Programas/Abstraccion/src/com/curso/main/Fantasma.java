@@ -13,13 +13,13 @@ public class Fantasma extends Enemigo{
 		
 		switch (siguienteMovimiento) {
 		case 1: 
-			System.out.println("El fantasma parece enojado");
+			System.out.println("El Fantasma parece enojado");
 			break;
 		case 2: 
-			System.out.println("El fantasma casi no se ve");
+			System.out.println("El Fantasma casi no se ve");
 			break;
 		case 3: 
-			System.out.println("El fantasma hace una cara tenebrosa");
+			System.out.println("El Fantasma hace una cara tenebrosa");
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + siguienteMovimiento);
@@ -30,12 +30,12 @@ public class Fantasma extends Enemigo{
 	
 	@Override
 	void presentacion() {
-		System.out.println("¡El fantasma aparece de la nada!");
+		System.out.println("¡El Fantasma aparece de la nada!");
 	}
 	
 	@Override
 	void derrota() {
-		System.out.println("El fantasma desaparece con un grito...");
+		System.out.println("El Fantasma desaparece con un grito...");
 		
 	}
 	
