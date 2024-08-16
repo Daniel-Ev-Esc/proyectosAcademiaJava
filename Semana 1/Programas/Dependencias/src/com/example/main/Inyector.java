@@ -3,7 +3,8 @@ package com.example.main;
 public class Inyector {
 
 	static Empleado inyectarCuenta(String nombre, TipoCorreo tipo) {
-		
+		 
+		// Según el tipo de correo se le asigna por constructor al empleado
 		switch(tipo) {
 		case JMAIL:
 			return new Empleado(nombre, new CuentaDeCorreoJmail(nombre));

@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class CuentaDeCorreoInlook extends CuentaDeCorreo{
 	
+	// Al crear la cuenta se define la dirección según el tipo de cuenta
 	public CuentaDeCorreoInlook(String nombre) {
 		super(nombre);
 		setDireccion();

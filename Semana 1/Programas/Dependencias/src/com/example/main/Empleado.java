@@ -2,9 +2,10 @@ package com.example.main;
 
 public class Empleado {
 	
-	String nombre;
-	CuentaDeCorreo cc;
+	private String nombre;
+	private CuentaDeCorreo cc;
 	
+	// Constructor necesario para la inyección
 	public Empleado(String nombre, CuentaDeCorreo cc) {
 		this.nombre = nombre;
 		this.cc = cc;

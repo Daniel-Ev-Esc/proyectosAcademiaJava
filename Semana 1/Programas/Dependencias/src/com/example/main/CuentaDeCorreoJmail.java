@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class CuentaDeCorreoJmail extends CuentaDeCorreo{
 	
+	// Al crear la cuenta se define la dirección según el tipo de cuenta
 	public CuentaDeCorreoJmail(String nombre) {
 		super(nombre);
 		setDireccion();

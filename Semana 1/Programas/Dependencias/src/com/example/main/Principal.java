@@ -3,13 +3,16 @@ package com.example.main;
 public class Principal {
 	
 	public static void main(String[] args) {
-	
+		
+		// Se crean la cuentas de los empleados	
 		Empleado jim = Inyector.inyectarCuenta("jim", TipoCorreo.JMAIL);
 		Empleado pam = Inyector.inyectarCuenta("pam", TipoCorreo.COLDMAIL);
 		Empleado dwigth = Inyector.inyectarCuenta("dwigth", TipoCorreo.INLOOK);
 		
+		// Se envía un correo 
 		jim.enviarCorreo(pam, "Hola Pam, tu vas a llevar los vasos a la fiesta de la oficina ¿Verdad?");
 		
+		// Se ve la bandeja de entrada
 		pam.verCorreo();
 		
 		pam.enviarCorreo(jim, "Hola Jim, claro yo los llevaré");
