@@ -3,9 +3,9 @@ package com.curso.main;
 public abstract class Entidad {
 	
 	// Estadísticas necesarias para el combate 
-	int hp;
-	int atk;
-	int def;
+	protected int hp;
+	protected int atk;
+	protected int def;
 
 	public Entidad(int hp, int atk, int def){
 		this.hp = hp;
