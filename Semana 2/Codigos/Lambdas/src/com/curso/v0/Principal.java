@@ -1,17 +1,21 @@
 package com.curso.v0;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
 
 public class Principal {
 
@@ -117,11 +121,158 @@ public class Principal {
 		setWeigthBiConsumer.accept(md2, 60.0);
 		System.out.println("After: " + md2);
 		
+		// Despliega los numeros de una lista multiplicados por otro
+		BiConsumer<Integer, List<Integer>> dobleListaBiConsumer = (x,y) -> {for (Integer integer : y) {
+		System.out.println(integer*x);	
+		}		};
+		
+		System.out.println("-----");
+		dobleListaBiConsumer.accept(4, intList);
+		
+		// Despliega un string n veces
+		BiConsumer<String, Integer> multipleStringBiConsumer = (s,n) -> { for (int i = 0; i < n; i++) {
+			System.out.print(s);
+		} 
+		System.out.println();};
+		
+		System.out.println("-----");
+		multipleStringBiConsumer.accept("hello",7);
+		
+		// Predicate 
+		System.out.println("--- Predicate ---");
+		// Recieves a number and checks if it's bigger than 100
+		Predicate<Integer> moreThan100 = x-> x>100;
+		
+		System.out.println(moreThan100.test(101));
+		
+		// Checks if a string from a string builder is a palindrome
+		Predicate<StringBuilder> checkPalindromePredicate = s-> s == s.reverse();
+		
+		System.out.println(checkPalindromePredicate.test(new StringBuilder("anna")));
+		
+		// Checks if a password is safe by checking if it's larger than 5 characters
+		Predicate<String> checkPasswordPredicate = x -> x.length()>5;
+		
+		System.out.println(checkPasswordPredicate.test("secr4"));
+		
+		// Checks if a number is even
+		Predicate<Integer> checkEvenPredicate = x -> x%2 == 0;
+		
+		System.out.println(checkEvenPredicate.test(3));
+		
+		// Bipredicate
+		System.out.println("--- BiPredicate ---");
+		
+		// Recieves a string and checks if the length is bigger than the one specified
+		BiPredicate<String, Integer> lengthRequirements = (x,y)-> x.length()>y;
+		System.out.println(lengthRequirements.test("hello world", 5));
+		
+		// Returns true if the double of an int is bigger then a double plus 10
+		BiPredicate<Integer, Double> doubleOrTen = (i, d) -> i*2 > d+10.0;
+		System.out.println(doubleOrTen.test(6, 2.1));
+		
+		// Checks if an integer in an ordered array
+		BiPredicate<List<Integer>, Integer> checksListBiPredicate = (li, x) -> { for (Integer integer : intList) {
+			if(integer == x)
+				return true;
+			if(integer > x)
+				return false;
+			} 
+			return false;
+		};
+		
+		System.out.println(checksListBiPredicate.test(intList, 6));
+		
+		// Checks if the sum of two numbers is over 10
+		BiPredicate<Integer, Double> sumTo10 = (x,y) -> x+y >10;
+		
+		System.out.println(sumTo10.test(3, 7.1));
+		
+		// Function
+		System.out.println("--- Function ---");
+		
+		// Returns the combined length of a list of strings
+		Function<List<String>, Integer> sumOfLengthFunction = li -> {int i = 0; for (String string: li) {
+			i += string.length();
+		} 
+		return i;};
+		
+		List<String> listStrings = new ArrayList<String>();
+		
+		listStrings.add("Hello");
+		listStrings.add("World");
+		
+		System.out.println(sumOfLengthFunction.apply(listStrings));
+		
+		// Returns the first element of a list
+		
+		List<Integer> list2 = new ArrayList<Integer>();
+		list2.add(2);
+		list2.add(5);
+		list2.add(8);
+		Function<List<Integer>, Integer> getFirstFunction = li -> li.get(0);
+		
+		System.out.println("-----");
+		System.out.println(getFirstFunction.apply(list2));
+		
+		// Returns a direction based on the number introduced (1 to 4, any other number gives an error)
+		Function<Integer, String> getDirectionFunction = i -> {
+			switch (i) {
+			case 1: {
+				return "North";
+			}
+			case 2: {
+				return "East";
+			}
+			case 3: {
+				return "South";
+			}
+			case 4: {
+				return "West";
+			}
+			default:
+				return "Error";
+			}
+		};
+		System.out.println("-----");
+		System.out.println(getDirectionFunction.apply(3));
+		
+		// Generates an object using only one integer and setting it to the height
+		Function<Integer, MedicalData> createData = h -> new MedicalData(h);
+		
+		System.out.println("-----");
+		System.out.println(createData.apply(140));
 		
 		// Bifunction
-
+		
+		System.out.println("--- BiFunction ---");
+		
+		// Returns the specified element of a list of integers, if the index is not in the list, returns -1;
+		BiFunction<List<Integer>, Integer, Integer> returnElementBiFunction = (li, i) -> {if(i < li.size() && i > 0) {return li.get(i);}
+			return -1;
+		};
+		
+		System.out.println(returnElementBiFunction.apply(list2, 2));
 		// Using an integer and a double in a constructor, This lambda function creates an instance of MedicalData with the specified value
 		BiFunction<Double, Integer, MedicalData> createDataBiFunction = (d, i) -> new MedicalData(d,i);
+		
+		System.out.println("-----");
+		System.out.println(createDataBiFunction.apply(80.0, 170));
+		
+		// Creates an entry for a map from an integer and a String
+		Map<Integer, String> newMap = new HashMap<>();
+		
+		BiFunction<Integer, String, Map.Entry<Integer, String>> createEntryBiFunction = (i, s) -> new AbstractMap.SimpleEntry<>(i, s);
+		
+		Map.Entry<Integer, String> entry = createEntryBiFunction.apply(26, "Jhon Smith");
+        
+        newMap.put(entry.getKey(), entry.getValue());
+        
+        System.out.println("-----");
+        System.out.println(newMap);
+        
+        // 
+        BiFunction<T, U, R>
 	}
 
 }
@@ -137,7 +288,10 @@ class MedicalData{
 	public MedicalData() {
 		
 	}
-
+	
+	public MedicalData(int height) {
+		this.height = height;
+	}
 
 	public MedicalData(double weight, int height) {
 		this.weight = weight;
