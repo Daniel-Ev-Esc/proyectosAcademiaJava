@@ -18,6 +18,6 @@ public class Empleado {
 	void verCorreo() {
 		this.cc.verCorreo();
 	}
-	
+		
 	
 }

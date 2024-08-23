@@ -11,10 +11,12 @@ import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 
 public class Principal {
@@ -218,18 +220,14 @@ public class Principal {
 		// Returns a direction based on the number introduced (1 to 4, any other number gives an error)
 		Function<Integer, String> getDirectionFunction = i -> {
 			switch (i) {
-			case 1: {
+			case 1: 
 				return "North";
-			}
-			case 2: {
+			case 2: 
 				return "East";
-			}
-			case 3: {
+			case 3: 
 				return "South";
-			}
-			case 4: {
+			case 4: 
 				return "West";
-			}
 			default:
 				return "Error";
 			}
@@ -238,7 +236,7 @@ public class Principal {
 		System.out.println(getDirectionFunction.apply(3));
 		
 		// Generates an object using only one integer and setting it to the height
-		Function<Integer, MedicalData> createData = h -> new MedicalData(h);
+		Function<Integer, MedicalData> createData =  h -> new MedicalData(h);
 		
 		System.out.println("-----");
 		System.out.println(createData.apply(140));
@@ -271,9 +269,57 @@ public class Principal {
         System.out.println("-----");
         System.out.println(newMap);
         
-        // 
-        BiFunction<T, U, R>
-	}
+        // Recibe dos strings, si el segundo se puede encontrar en el primero, regresa la longitud del resto del string
+        BiFunction<String, String, Integer> remainingString = (s,sub) -> s.contains(sub) ? s.length() - sub.length() : 0;
+        
+        System.out.println("-----");
+        System.out.println(remainingString.apply("aerodinamico", "aero"));
+        
+        // Unary operations
+		System.out.println("--- Unary Operation---");
+		
+		// Recibe un entero y regresa su cuadrado
+		UnaryOperator<Integer> squareOperator = x -> x*x;
+		System.out.println(squareOperator.apply(4));
+		
+		// Regresa la parte decimal de un double
+		UnaryOperator<Double> decimalOperator = d -> d - Math.floor(d);
+		System.out.println("-----");
+		System.out.println(decimalOperator.apply(8.5));
+		
+		// Regresa el inverso de un double
+		UnaryOperator<Double> inverseOperator = d -> 1/d;
+		System.out.println("-----");
+		System.out.println(inverseOperator.apply(0.75));
+		
+		// Add a leading and trailing space to a string
+		UnaryOperator<String> addSpaceOperator = s -> " " + s + " ";
+		System.out.println("-----");
+		System.out.println(addSpaceOperator.apply("Hello world"));
+		
+		// Binary Operators
+		System.out.println("--- Binary Operators ---");
+		
+		// Get the max imun from two numbers
+		BinaryOperator<Integer> maxBinaryOperator = (a,b) -> Math.max(a, b);
+		System.out.println(maxBinaryOperator.apply(12, 89));
+		
+		// Add the decimal values of two doubles
+		BinaryOperator<Double> sumDecimals = (c,d) -> (c - Math.floor(c)) + (d-Math.floor(d));
+		System.out.println("-----");
+		System.out.println(sumDecimals.apply(5.8, 9.5));
+		
+		// Adds a dash between the two strings passed
+		BinaryOperator<String> dashBinaryOperator = (str1, str2) -> str1 + " - " + str2;
+		System.out.println(dashBinaryOperator.apply("Hello", "World"));
+		
+		// Suma las propiedades de dos objetos de datos médicos y construye uno nuevo con esos datos
+		MedicalData mda = new MedicalData(72.3, 150);
+		MedicalData mdb = new MedicalData(66.5, 180);
+		BinaryOperator<MedicalData> averageMedicalDataBinaryOperator = (mdone, mdtwo) -> new MedicalData((mdone.getWeight() + mdtwo.getWeight())/2, (int)((mdone.getHeight() + mdtwo.getHeight())/2));
+		System.out.println("-----");
+		System.out.println(averageMedicalDataBinaryOperator.apply(mda, mdb));
+		}
 
 }
 

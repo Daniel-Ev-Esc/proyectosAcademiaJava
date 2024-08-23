@@ -74,7 +74,7 @@ public class Principal {
 			siguienteMovimiento = enemigo.decirProximoMovimiento();
 			
 			// Reinicia la elección del menú
-			choice = 0;
+			choice = 0;	
 			valid = false;
 
 			// Ciclo del menú del jugador
