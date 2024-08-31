@@ -6,6 +6,7 @@ public class LongCourse {
 	String title;
 	int modules;
 	
+	
 	public String getLanguage() {
 		return language;
 	}

@@ -83,5 +83,7 @@ class ObserverTest {
 		assertEquals("Emergency meeting: september 12 2024, 12:00", meetingAdmin2.getMeetingInfo());
 		assertEquals("Emergency meeting: september 12 2024, 12:00", participant1.getMeetingInfo());	
 		assertEquals("Emergency meeting: september 12 2024, 12:00", participant2.getMeetingInfo());
+		
+		meeting.detach(participant2);
 	}
 }

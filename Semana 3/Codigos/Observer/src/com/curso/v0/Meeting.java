@@ -1,5 +1,6 @@
 package com.curso.v0;
 
+// A meeting is an object with participants which get notified if a detail of the meeting is changed
 public class Meeting extends Subject {
 	
 	private String name;
@@ -16,6 +17,7 @@ public class Meeting extends Subject {
 		this.year = year;
 	}	
 	
+	// With each change it notifies the participants subscribed
 	public void setName(String name) {
 		this.name = name;
 		notificar();

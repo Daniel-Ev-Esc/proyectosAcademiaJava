@@ -3,6 +3,7 @@ package com.curso.v0;
 import java.util.ArrayList;
 import java.util.List;
 
+// A subject has a subscriber Array in which it iterates to update in case of changes
 public abstract class Subject {
 
 	List<Observer> observers = new ArrayList<>();

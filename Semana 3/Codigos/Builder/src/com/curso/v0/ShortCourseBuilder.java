@@ -2,10 +2,18 @@ package com.curso.v0;
 
 public class ShortCourseBuilder implements Builder{
 	
+	// Instance of object to build
 	private ShortCourse shortCourse;
 	
 	public ShortCourseBuilder(ShortCourse shortCourse) {
 		this.shortCourse = shortCourse;
+	}
+	
+	// Set properties to initial values
+	@Override
+	public Builder reset() {
+		this.shortCourse = new ShortCourse();
+		return this;
 	}
 
 	@Override
@@ -26,6 +34,7 @@ public class ShortCourseBuilder implements Builder{
 		return this;
 	}
 	
+	// Return instance of object with values specified by methods
 	public ShortCourse getResult() {
 		return shortCourse;
 	}

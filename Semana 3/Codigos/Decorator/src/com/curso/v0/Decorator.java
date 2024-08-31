@@ -1,9 +1,9 @@
 package com.curso.v0;
 
-//                              IS-A
+// Decorator
 public abstract class Decorator implements Component {
 	
-	//  HAS A
+	//Contains a component to activate it's get access method
 	private Component component;
 	
 	public Decorator(Component component) {
