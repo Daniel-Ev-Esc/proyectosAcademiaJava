@@ -37,9 +37,9 @@ public class CruddemoApplication {
 
 			queryForBooksByAuthor(bookDAO);
 
-			deleteBook(bookDAO);
-
-			deleteAllBooks(bookDAO);
+//			deleteBook(bookDAO);
+//
+//			deleteAllBooks(bookDAO);
 		};
 	}
 
