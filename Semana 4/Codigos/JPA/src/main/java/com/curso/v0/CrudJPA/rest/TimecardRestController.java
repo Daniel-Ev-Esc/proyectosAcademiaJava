@@ -39,7 +39,6 @@ public class TimecardRestController {
 	@GetMapping("timecards/{id}")
 	public Timecard TimecardById(@PathVariable long id){
 		
-		// Find the timecard by ID
 	    Timecard theTimecard = timecardService.findById(id);
 
 	    if (theTimecard == null) {

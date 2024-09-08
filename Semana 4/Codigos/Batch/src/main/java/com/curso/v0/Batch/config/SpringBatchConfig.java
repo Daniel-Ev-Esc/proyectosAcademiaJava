@@ -53,7 +53,7 @@ public class SpringBatchConfig {
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("id", "name", "department", "entryTime", "exitTime", "lunchTime");
+        lineTokenizer.setNames("id", "name", "department", "eSntryTime", "exitTime", "lunchTime");
         
         BeanWrapperFieldSetMapper<Timecard> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Timecard.class);
