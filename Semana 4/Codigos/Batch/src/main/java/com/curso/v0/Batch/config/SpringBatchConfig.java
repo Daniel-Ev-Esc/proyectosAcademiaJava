@@ -36,7 +36,7 @@ public class SpringBatchConfig {
 
     private TimecardRepository timecardRepository;
     
-    
+    // Reader that gets the data from the excel file and maps it to the timecard class
     @Bean
     public FlatFileItemReader<Timecard> reader() {
     	FlatFileItemReader<Timecard> itemReader = new FlatFileItemReader<Timecard>();
@@ -63,9 +63,11 @@ public class SpringBatchConfig {
         return lineMapper;
     }
     
+    // One step that is used on the job
     @Bean
     public Step step1() {
     	
+    	// Supplier that saves the processed data in the database
     	Supplier<RepositoryItemWriter<Timecard>> supplier = () -> {
 			RepositoryItemWriter<Timecard> writer = new RepositoryItemWriter<>();
 	        writer.setRepository(timecardRepository);
@@ -73,10 +75,11 @@ public class SpringBatchConfig {
 	        return writer;
        	};
     	
+       	// Definition of step that uses the reader, processor and writer
     	return stepBuilderFactory.get("csv-step")
         		.<Timecard, Timecard>chunk(10)
                 .reader(reader())
-                .processor((ItemProcessor<Timecard, Timecard>) client -> {
+                .processor((ItemProcessor<Timecard, Timecard>) client -> { // Lambda definition of processor that filters timecards of the IT department
                 	if(client.getDepartment().equals("IT"))
                         return client;
                     return null;

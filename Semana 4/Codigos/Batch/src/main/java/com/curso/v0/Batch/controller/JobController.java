@@ -20,7 +20,7 @@ public class JobController {
     @Autowired
     private JobLauncher jobLauncher;
     @Autowired
-    private Job job; //<== INYECTAR Job
+    private Job job;
 
     @PostMapping("/importTimecards")
     public void importCsvToDBJob() {

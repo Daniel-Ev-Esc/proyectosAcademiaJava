@@ -13,6 +13,7 @@ import org.mockito.*;
 
 class ResumeMakerTest {
 	
+	// Defines interface to mock
 	@Mock
 	ResumeMakerCloud rmc;
 	
@@ -26,12 +27,14 @@ class ResumeMakerTest {
 
 	@Test
 	void makeIdentifierTest() {
+		// Establishes the result of the use of the methods with specific parameters
 		when(rmc.makeIdentifier("Daniel Evaristo", "Escalera Bonilla", "2004-02-08")).thenReturn("DEEB080203");
 
 		String result = rm.makeIdentifier("Daniel Evaristo", "Escalera Bonilla", "2004-02-08");
 		
 		assertEquals("DEEB080203", result);
 		
+		// Verifies the parameters used on the interface
 		verify(rmc).makeIdentifier("Daniel Evaristo", "Escalera Bonilla", "2004-02-08");
 		
 	}

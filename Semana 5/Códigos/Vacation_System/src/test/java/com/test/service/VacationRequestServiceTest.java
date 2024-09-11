@@ -68,7 +68,7 @@ class VacationRequestServiceTest {
 	}
 	
 	@Test
-	void assignRequestCard() {
+	void assignRequestTest() {
 		when(repoHR.findById(1)).thenReturn(Optional.of(hr));
 		VacationRequest vr = new VacationRequest(e, LocalDate.of(2024, 9, 11), LocalDate.of(2024, 10, 11), Status.PENDING, "Familiar");
 		when(repoVR.findById(1)).thenReturn(Optional.of(vr));
@@ -83,20 +83,32 @@ class VacationRequestServiceTest {
 		verify(repoVR).save(vr);
 	}
 	
-//	@Test
-//	void acceptRequestCard() {
-//		when(repoHR.findById(1)).thenReturn(Optional.of(hr));
-//		VacationRequest vr = new VacationRequest(e, LocalDate.of(2024, 9, 11), LocalDate.of(2024, 10, 11), "Pending", "Familiar");
-//		when(repoVR.findById(1)).thenReturn(Optional.of(vr));
-//		vr.setHrEmployee(hr);
-//		when(repoVR.save(vr)).thenReturn(vr);
-//		
-//		VacationRequest result = s.assignRequest(1, 1);
-//		
-//		assertEquals(vr, result);
-//
-//		verify(repoHR).findById(1);
-//		verify(repoVR).save(vr);
-//	}
+	@Test
+	void acceptRequestTest() {
+		VacationRequest vr = new VacationRequest(e, LocalDate.of(2024, 9, 11), LocalDate.of(2024, 10, 11), Status.PENDING, "Familiar");
+		when(repoVR.findById(1)).thenReturn(Optional.of(vr));
+		vr.setStatus(Status.ACCEPTED);
+		when(repoVR.save(vr)).thenReturn(vr);
+		
+		VacationRequest result = s.acceptRequest(1);
+		
+		assertEquals(vr, result);
+		
+		verify(repoVR).save(vr);
+	}
+	
+	@Test
+	void rejectRequestTest() {
+		VacationRequest vr = new VacationRequest(e, LocalDate.of(2024, 9, 11), LocalDate.of(2024, 10, 11), Status.PENDING, "Familiar");
+		when(repoVR.findById(1)).thenReturn(Optional.of(vr));
+		vr.setStatus(Status.DECLINED);
+		when(repoVR.save(vr)).thenReturn(vr);
+		
+		VacationRequest result = s.rejectRequest(1);
+		
+		assertEquals(vr, result);
+		
+		verify(repoVR).save(vr);
+	}
 
 }

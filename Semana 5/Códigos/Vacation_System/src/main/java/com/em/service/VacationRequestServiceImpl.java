@@ -44,4 +44,28 @@ public class VacationRequestServiceImpl implements VacationRequestService {
 		
 		return dbVacationRequest;		
 	}
+	
+	@Override
+	public VacationRequest acceptRequest(int vrId) {
+		VacationRequest vr = vrRepo.findById(vrId)
+				 .orElseThrow(() -> new RuntimeException("Request not found"));;
+				 
+		vr.setStatus(Status.ACCEPTED);
+		
+		VacationRequest dbVacationRequest = vrRepo.save(vr);
+		
+		return dbVacationRequest;		
+	}
+	
+	@Override
+	public VacationRequest rejectRequest(int vrId) {
+		VacationRequest vr = vrRepo.findById(vrId)
+				 .orElseThrow(() -> new RuntimeException("Request not found"));;
+				 
+		vr.setStatus(Status.DECLINED);
+		
+		VacationRequest dbVacationRequest = vrRepo.save(vr);
+		
+		return dbVacationRequest;
+	}
 }
