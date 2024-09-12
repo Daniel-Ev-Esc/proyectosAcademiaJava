@@ -1,6 +1,9 @@
 package com.em.service;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.em.entities.Employee;
 import com.em.entities.VacationRequest;
@@ -9,6 +12,7 @@ import com.em.repository.EmployeeRepository;
 import com.em.repository.HREmployeeRepository;
 import com.em.repository.VacationRequestRepository;
 
+@Service
 public class VacationRequestServiceImpl implements VacationRequestService {
 
 	EmployeeRepository eRepo;
@@ -19,6 +23,17 @@ public class VacationRequestServiceImpl implements VacationRequestService {
 		this.eRepo = eRepo;
 		this.vrRepo = vrRepo;
 		this.hrRepo = hrRepo;
+	}
+	
+	@Override
+	public List<VacationRequest> getAll() {
+		return vrRepo.findAll();
+	}
+	
+	@Override
+	public VacationRequest getById(int id) {
+		return vrRepo.findById(id)
+				 .orElseThrow(() -> new RuntimeException("Request not found"));
 	}
 	
 	@Override
@@ -36,7 +51,7 @@ public class VacationRequestServiceImpl implements VacationRequestService {
 	public VacationRequest assignRequest(int vrId, int hrId) {
 		
 		VacationRequest vr = vrRepo.findById(vrId)
-				 .orElseThrow(() -> new RuntimeException("Request not found"));;
+				 .orElseThrow(() -> new RuntimeException("Request not found"));
 		
 		vr.setHrEmployee(hrRepo.findById(hrId).orElseThrow(() -> new RuntimeException("Employee not found")));
 		

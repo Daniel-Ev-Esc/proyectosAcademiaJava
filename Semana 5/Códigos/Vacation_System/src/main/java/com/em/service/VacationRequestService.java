@@ -2,6 +2,7 @@ package com.em.service;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.em.entities.VacationRequest;
 import com.em.enumerators.Status;
@@ -15,5 +16,9 @@ public interface VacationRequestService {
 	VacationRequest acceptRequest(int vrId);
 
 	VacationRequest rejectRequest(int vrId);
+
+	List<VacationRequest> getAll();
+
+	VacationRequest getById(int id);
 
 }
