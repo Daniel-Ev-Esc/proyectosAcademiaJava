@@ -47,4 +47,30 @@ public class VacationRequestRestController {
     								 vrDTO.getStatus(), 
     								 vrDTO.getReason());    	    	
     }
+    
+    @PutMapping("/assign")
+    public VacationRequest assignRequest(@RequestBody AssignerObj ab) {
+    	return vrService.assignRequest(ab.getVacationRequestId(), ab.getHrEmployeeId());
+    }
+    
+    @PutMapping("/accept/{vrId}")
+    public VacationRequest acceptRequest(@PathVariable int vrId) {
+    	return vrService.acceptRequest(vrId);
+    }
+    
+    @PutMapping("/decline/{vrId}")
+    public VacationRequest declineRequest(@PathVariable int vrId) {
+    	return vrService.rejectRequest(vrId);
+    }
+};
+
+class AssignerObj {
+	private int vacationRequestId;
+	private int hrEmployeeId;
+	public int getVacationRequestId() {
+		return vacationRequestId;
+	}
+	public int getHrEmployeeId() {
+		return hrEmployeeId;
+	}
 }
