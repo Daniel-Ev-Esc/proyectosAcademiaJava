@@ -21,7 +21,7 @@ import com.em.service.VacationRequestService;
 
 @RestController
 @RequestMapping("/vacation-requests")
-@CrossOrigin(origins = "http://localhost:4200")  // Allow Angular app hosted on localhost:4200
+@CrossOrigin(origins = "http://localhost:4200")  
 public class VacationRequestRestController {
 
     private VacationRequestService vrService;

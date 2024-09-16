@@ -47,4 +47,10 @@ public class HREmployeeServiceImpl implements HREmployeeService {
 	public void deleteById(int theId) {
 		hrEmployeeRepository.deleteById(theId);
 	}
+	
+	@Override
+	public HREmployee findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return hrEmployeeRepository.findByEmail(email);
+	}
 }

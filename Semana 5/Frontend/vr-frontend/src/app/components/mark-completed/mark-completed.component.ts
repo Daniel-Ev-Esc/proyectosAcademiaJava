@@ -31,8 +31,6 @@ export class MarkCompletedComponent {
   markAsCompleted(): void {
     this.http
       .post('http://localhost:9192/jobs/completeRequest', null)
-      .subscribe((data) => {
-        console.log(data);
-      });
+      .subscribe();
   }
 }

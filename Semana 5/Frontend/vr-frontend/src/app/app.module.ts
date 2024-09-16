@@ -9,7 +9,8 @@ import { SeeRequestComponent } from './components/see-request/see-request.compon
 import { MarkCompletedComponent } from './components/mark-completed/mark-completed.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginHrComponent } from './components/login-hr/login-hr.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,15 @@ import { FormsModule } from '@angular/forms';
     SeeRequestComponent,
     MarkCompletedComponent,
     LoginComponent,
+    LoginHrComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

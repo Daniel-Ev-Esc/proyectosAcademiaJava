@@ -6,4 +6,5 @@ import com.em.entities.HREmployee;
 
 public interface HREmployeeRepository extends JpaRepository<HREmployee, Integer>{
 
+	HREmployee findByEmail(String email);
 }

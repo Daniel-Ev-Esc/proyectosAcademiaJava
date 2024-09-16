@@ -3,6 +3,7 @@ package com.em.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.em.entities.Employee;
 import com.em.entities.HREmployee;
 import com.em.service.HREmployeeService;
 
 @RestController
 @RequestMapping("/hr/")
+@CrossOrigin(origins = "http://localhost:4200")  // Allow Angular app hosted on localhost:4200
 public class HREmployeeRestController {
 
     private HREmployeeService hrEmployeeService;
@@ -38,6 +41,11 @@ public class HREmployeeRestController {
     	
     	return theHREmployee;
     }
+    
+    @GetMapping("/employees/get-profile/{email}")
+	public HREmployee getByEmail(@PathVariable String email) {
+		return hrEmployeeService.findByEmail(email);
+	}
     
     @PostMapping("/employees")
     public HREmployee create(@RequestBody HREmployee theHREmployee) {

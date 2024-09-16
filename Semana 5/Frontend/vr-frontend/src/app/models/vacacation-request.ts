@@ -2,8 +2,9 @@ import { HREmployee } from './hremployee';
 import { Employee } from './employee';
 
 export interface VacationRequest {
-  id: number;
-  requester: Employee;
+  id?: number;
+  requester?: Employee;
+  employeeId?: number;
   startDate: string; // Use string for date to handle JSON parsing
   endDate: string; // Same as above
   status: Status;

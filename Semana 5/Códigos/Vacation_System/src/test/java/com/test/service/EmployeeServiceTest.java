@@ -103,6 +103,17 @@ class EmployeeServiceTest {
 
 	}
 	
+	@Test
+	void findByEmail() {
+		when(repo.findByEmail("john.doe@example.com")).thenReturn(employeeList.get(0));
+		
+		Employee result = s.findByEmail("john.doe@example.com");
+		
+		assertEquals(employeeList.get(0), result);
+		
+		verify(repo).findByEmail("john.doe@example.com");
+	}
+	
 	// Tests the updating and creating of an element by the service
 	@Test
 	void saveEmployeeTest() {

@@ -1,5 +1,5 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <h2>Login as HR</h2>
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username (Email)</label>
@@ -24,6 +24,5 @@
     </div>
 
     <button type="submit" [disabled]="!username || !password">Login</button>
-    <button type="button" (click)="gotoHR()">Login as HR</button>
   </form>
 </div>

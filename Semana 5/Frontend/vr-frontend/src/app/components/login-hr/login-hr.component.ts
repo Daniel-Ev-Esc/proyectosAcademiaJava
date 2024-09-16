@@ -5,11 +5,11 @@ import { Employee } from 'src/app/models/employee';
 import { SessionService } from 'src/app/session.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-login-hr',
+  templateUrl: './login-hr.component.html',
+  styleUrls: ['./login-hr.component.css'],
 })
-export class LoginComponent {
+export class LoginHrComponent {
   username: string = '';
   password: string = '';
 
@@ -21,20 +21,17 @@ export class LoginComponent {
 
   onSubmit() {
     const email = this.username;
-    const url = `http://localhost:8080/employees/get-profile/${email}`;
+    const url = `http://localhost:8080/hr/employees/get-profile/${email}`;
 
     this.http.get<Employee>(url).subscribe(
       (data) => {
+        this.sessionService.setHr();
         this.sessionService.setEmployee(data);
-        this.router.navigateByUrl('/createRequest');
+        this.router.navigateByUrl('/requestList');
       },
       (error) => {
         console.error('Error fetching employee profile:', error);
       }
     );
-  }
-
-  gotoHR() {
-    this.router.navigateByUrl('/hr');
   }
 }

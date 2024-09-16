@@ -2,6 +2,7 @@ package com.em.service;
 
 import java.util.List;
 
+import com.em.entities.Employee;
 import com.em.entities.HREmployee;
 
 public interface HREmployeeService {
@@ -13,5 +14,7 @@ public interface HREmployeeService {
 	HREmployee save(HREmployee hrEmployee);
 
 	void deleteById(int theId);
+
+	HREmployee findByEmail(String email);
 
 }

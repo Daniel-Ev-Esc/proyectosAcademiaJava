@@ -14,4 +14,6 @@ public interface EmployeeService {
 
 	void deleteById(int i);
 
+	Employee findByEmail(String string);
+
 }
