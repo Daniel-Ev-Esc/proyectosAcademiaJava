@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "requester": {
+      "id": 1,
+      "name": "John",
+      "lastName": "Doe",
+      "department": "Engineering",
+      "email": "john.doe@example.com"
+    },
+    "startDate": "2024-09-15",
+    "endDate": "2024-09-20",
+    "status": "PENDING",
+    "reason": "Family vacation",
+    "hrEmployee": {
+      "id": 101,
+      "name": "Alice",
+      "lastName": "Williams",
+      "department": "HR",
+      "email": "alice.williams@example.com"
+    }
+  },
+  {
+    "id": 2,
+    "requester": {
+      "id": 2,
+      "name": "Jane",
+      "lastName": "Smith",
+      "department": "Marketing",
+      "email": "jane.smith@example.com"
+    },
+    "startDate": "2024-10-01",
+    "endDate": "2024-10-05",
+    "status": "APPROVED",
+    "reason": "Conference attendance",
+    "hrEmployee": {
+      "id": 102,
+      "name": "Bob",
+      "lastName": "Johnson",
+      "department": "HR",
+      "email": "bob.johnson@example.com"
+    }
+  },
+  {
+    "id": 3,
+    "requester": {
+      "id": 3,
+      "name": "David",
+      "lastName": "Brown",
+      "department": "Sales",
+      "email": "david.brown@example.com"
+    },
+    "startDate": "2024-11-05",
+    "endDate": "2024-11-10",
+    "status": "REJECTED",
+    "reason": "Holiday trip",
+    "hrEmployee": {
+      "id": 103,
+      "name": "Carla",
+      "lastName": "Davis",
+      "department": "HR",
+      "email": "carla.davis@example.com"
+    }
+  },
+  {
+    "id": 4,
+    "requester": {
+      "id": 4,
+      "name": "Emily",
+      "lastName": "Taylor",
+      "department": "Finance",
+      "email": "emily.taylor@example.com"
+    },
+    "startDate": "2024-09-20",
+    "endDate": "2024-09-25",
+    "status": "PENDING",
+    "reason": "Personal leave",
+    "hrEmployee": {
+      "id": 104,
+      "name": "David",
+      "lastName": "Martinez",
+      "department": "HR",
+      "email": "david.martinez@example.com"
+    }
+  },
+  {
+    "id": 5,
+    "requester": {
+      "id": 5,
+      "name": "Michael",
+      "lastName": "Wilson",
+      "department": "IT",
+      "email": "michael.wilson@example.com"
+    },
+    "startDate": "2024-12-01",
+    "endDate": "2024-12-10",
+    "status": "APPROVED",
+    "reason": "Long vacation",
+    "hrEmployee": {
+      "id": 105,
+      "name": "Emma",
+      "lastName": "Garcia",
+      "department": "HR",
+      "email": "emma.garcia@example.com"
+    }
+  },
+  {
+    "id": 6,
+    "requester": {
+      "id": 6,
+      "name": "Sarah",
+      "lastName": "Clark",
+      "department": "Legal",
+      "email": "sarah.clark@example.com"
+    },
+    "startDate": "2024-10-20",
+    "endDate": "2024-10-25",
+    "status": "PENDING",
+    "reason": "Maternity leave",
+    "hrEmployee": {
+      "id": 106,
+      "name": "Mark",
+      "lastName": "Thomas",
+      "department": "HR",
+      "email": "mark.thomas@example.com"
+    }
+  },
+  {
+    "id": 7,
+    "requester": {
+      "id": 7,
+      "name": "Chris",
+      "lastName": "Hernandez",
+      "department": "Operations",
+      "email": "chris.hernandez@example.com"
+    },
+    "startDate": "2024-09-25",
+    "endDate": "2024-09-30",
+    "status": "REJECTED",
+    "reason": "Family emergency",
+    "hrEmployee": {
+      "id": 107,
+      "name": "Olivia",
+      "lastName": "Moore",
+      "department": "HR",
+      "email": "olivia.moore@example.com"
+    }
+  },
+  {
+    "id": 8,
+    "requester": {
+      "id": 8,
+      "name": "Sophia",
+      "lastName": "Martinez",
+      "department": "Product Management",
+      "email": "sophia.martinez@example.com"
+    },
+    "startDate": "2024-11-15",
+    "endDate": "2024-11-20",
+    "status": "PENDING",
+    "reason": "Workshop",
+    "hrEmployee": {
+      "id": 108,
+      "name": "Liam",
+      "lastName": "Jackson",
+      "department": "HR",
+      "email": "liam.jackson@example.com"
+    }
+  },
+  {
+    "id": 9,
+    "requester": {
+      "id": 9,
+      "name": "James",
+      "lastName": "Anderson",
+      "department": "Customer Support",
+      "email": "james.anderson@example.com"
+    },
+    "startDate": "2024-12-10",
+    "endDate": "2024-12-15",
+    "status": "APPROVED",
+    "reason": "Health reasons",
+    "hrEmployee": {
+      "id": 109,
+      "name": "Sophia",
+      "lastName": "Lee",
+      "department": "HR",
+      "email": "sophia.lee@example.com"
+    }
+  },
+  {
+    "id": 10,
+    "requester": {
+      "id": 10,
+      "name": "Olivia",
+      "lastName": "Thomas",
+      "department": "Engineering",
+      "email": "olivia.thomas@example.com"
+    },
+    "startDate": "2024-11-25",
+    "endDate": "2024-11-30",
+    "status": "PENDING",
+    "reason": "Vacation abroad",
+    "hrEmployee": {
+      "id": 110,
+      "name": "Lucas",
+      "lastName": "Miller",
+      "department": "HR",
+      "email": "lucas.miller@example.com"
+    }
+  }
+]

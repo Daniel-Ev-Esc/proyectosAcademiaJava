@@ -1,0 +1,9 @@
+<div *ngFor="let item of vacationRequests">
+  <h1>{{ item.requester.email }}</h1>
+  <p>{{ item.startDate }} to {{ item.endDate }}</p>
+  <p>Reason: {{ item.reason }}</p>
+  <p>Status: {{ item.status }}</p>
+  <button (click)="acceptRequest(item.id)">Accept</button>
+  <button (click)="rejectRequest(item.id)">Reject</button>
+  <hr />
+</div>
