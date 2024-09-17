@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Status, VacationRequest } from 'src/app/models/vacacation-request';
+import { SessionService } from 'src/app/session.service';
 
 @Component({
   selector: 'app-mark-completed',
@@ -10,15 +11,32 @@ import { Status, VacationRequest } from 'src/app/models/vacacation-request';
 export class MarkCompletedComponent {
   vacationRequests: VacationRequest[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private sessionService: SessionService
+  ) {}
 
   ngOnInit(): void {
     this.getVacationRequests();
   }
 
   getVacationRequests(): void {
+    const credentials = this.sessionService.getCredentials();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:
+          'Basic ' + btoa(`${credentials?.username}:${credentials?.password}`),
+      }),
+      withCredentials: true,
+    };
+
     this.http
-      .get<VacationRequest[]>('http://localhost:8080/vacation-requests')
+      .get<VacationRequest[]>(
+        'http://localhost:8080/vacation-requests',
+        httpOptions
+      )
       .subscribe((data) => {
         this.vacationRequests = data.filter(
           (data) =>

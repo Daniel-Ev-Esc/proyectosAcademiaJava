@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Status, VacationRequest } from 'src/app/models/vacacation-request';
+import { SessionService } from 'src/app/session.service';
 
 @Component({
   selector: 'app-see-request',
@@ -10,36 +11,81 @@ import { Status, VacationRequest } from 'src/app/models/vacacation-request';
 export class SeeRequestComponent {
   vacationRequests: VacationRequest[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private sessionService: SessionService
+  ) {}
 
   ngOnInit(): void {
     this.getVacationRequests();
   }
 
   getVacationRequests(): void {
+    const credentials = this.sessionService.getCredentials();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:
+          'Basic ' + btoa(`${credentials?.username}:${credentials?.password}`),
+      }),
+      withCredentials: true,
+    };
+
     this.http
-      .get<VacationRequest[]>('http://localhost:8080/vacation-requests')
+      .get<VacationRequest[]>(
+        'http://localhost:8080/vacation-requests',
+        httpOptions
+      )
       .subscribe((data) => {
         this.vacationRequests = data.filter(
-          (item) => item.status == Status.PENDING
+          (request) => request.status == Status.PENDING
         );
-        console.log(this.vacationRequests); // Log data to the console
       });
   }
 
   acceptRequest(id: number): void {
+    const credentials = this.sessionService.getCredentials();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:
+          'Basic ' + btoa(`${credentials?.username}:${credentials?.password}`),
+      }),
+      withCredentials: true,
+    };
+
     console.log('Accepted' + id);
     this.http
-      .put('http://localhost:8080/vacation-requests/accept/' + id, null)
+      .put(
+        'http://localhost:8080/vacation-requests/accept/' + id,
+        null,
+        httpOptions
+      )
       .subscribe((data) => {
         console.log(data);
       });
   }
 
   rejectRequest(id: number): void {
-    console.log('Rejected' + id);
+    const credentials = this.sessionService.getCredentials();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:
+          'Basic ' + btoa(`${credentials?.username}:${credentials?.password}`),
+      }),
+      withCredentials: true,
+    };
+
     this.http
-      .put('http://localhost:8080/vacation-requests/decline/' + id, null)
+      .put(
+        'http://localhost:8080/vacation-requests/decline/' + id,
+        null,
+        httpOptions
+      )
       .subscribe((data) => {
         console.log(data);
       });

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class CreateRequestComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private employeeService: SessionService
+    private sessionService: SessionService
   ) {
     this.vacationRequestForm = this.fb.group({
       startDate: ['', Validators.required],
@@ -38,13 +38,29 @@ export class CreateRequestComponent {
         endDate: this.vacationRequestForm.value.endDate,
         status: Status.PENDING,
         reason: this.vacationRequestForm.value.reason,
-        employeeId: this.employeeService.getEmployee()!.id,
+        employeeId: this.sessionService.getEmployee()!.id,
       };
 
       // console.log(vacationRequest);
 
+      const credentials = this.sessionService.getCredentials();
+
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization:
+            'Basic ' +
+            btoa(`${credentials?.username}:${credentials?.password}`),
+        }),
+        withCredentials: true,
+      };
+
       this.http
-        .post('http://localhost:8080/vacation-requests/create', vacationRequest)
+        .post(
+          'http://localhost:8080/vacation-requests/create',
+          vacationRequest,
+          httpOptions
+        )
         .subscribe((data) => {
           console.log(data);
         });

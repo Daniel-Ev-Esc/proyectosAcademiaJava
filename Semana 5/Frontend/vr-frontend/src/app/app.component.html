@@ -1,2 +1,4 @@
-<app-navigation-bar></app-navigation-bar>
+<div *ngIf="getCredentials()">
+  <app-navigation-bar></app-navigation-bar>
+</div>
 <router-outlet></router-outlet>

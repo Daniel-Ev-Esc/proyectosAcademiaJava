@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
@@ -20,10 +20,26 @@ export class LoginComponent {
   ) {}
 
   onSubmit() {
+    this.sessionService.setCredentials({
+      username: this.username,
+      password: this.password,
+    });
+
+    const credentials = this.sessionService.getCredentials();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:
+          'Basic ' + btoa(`${credentials?.username}:${credentials?.password}`),
+      }),
+      withCredentials: true,
+    };
+
     const email = this.username;
     const url = `http://localhost:8080/employees/get-profile/${email}`;
 
-    this.http.get<Employee>(url).subscribe(
+    this.http.get<Employee>(url, httpOptions).subscribe(
       (data) => {
         this.sessionService.setEmployee(data);
         this.router.navigateByUrl('/createRequest');

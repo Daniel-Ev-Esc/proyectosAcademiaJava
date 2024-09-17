@@ -7,8 +7,17 @@ import { Employee } from './models/employee';
 export class SessionService {
   private employee: Employee | null = null;
   private hr: Boolean = false;
+  private credentials: Credentials | null = null;
 
   constructor() {}
+
+  setCredentials(credentials: Credentials) {
+    this.credentials = credentials;
+  }
+
+  getCredentials() {
+    return this.credentials;
+  }
 
   setEmployee(employee: Employee) {
     this.employee = employee;
@@ -28,4 +37,9 @@ export class SessionService {
   clearEmployee() {
     this.employee = null;
   }
+}
+
+interface Credentials {
+  username: String;
+  password: String;
 }

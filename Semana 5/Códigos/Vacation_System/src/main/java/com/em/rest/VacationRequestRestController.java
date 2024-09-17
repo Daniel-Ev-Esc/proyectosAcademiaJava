@@ -1,5 +1,6 @@
 package com.em.rest;
 
+import java.io.Console;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class VacationRequestRestController {
     
     @PostMapping("/create")
     public VacationRequest createRequest(@RequestBody VacationRequestDTO vrDTO) {
+    	
+    	System.out.println(vrDTO);
+    	
     	return vrService.makeRequest(vrDTO.getEmployeeId(), 
     								 vrDTO.getStartDate(), 
     								 vrDTO.getEndDate(), 

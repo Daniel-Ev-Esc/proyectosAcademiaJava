@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "HREmployees_table")
@@ -38,5 +37,8 @@ public class HREmployee{
 		this.department = "HR";
 	}
 	
+	public HREmployee() {
+		this.department = "HR";
+	}
 	
 }

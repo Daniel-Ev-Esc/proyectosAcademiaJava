@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.em.dto.EmployeeDTO;
 import com.em.entities.Employee;
 import com.em.entities.HREmployee;
 import com.em.service.HREmployeeService;
+import com.em.service.UserService;
 
 @RestController
 @RequestMapping("/hr/")
@@ -23,10 +25,12 @@ import com.em.service.HREmployeeService;
 public class HREmployeeRestController {
 
     private HREmployeeService hrEmployeeService;
+	private UserService userService;
 
     @Autowired
-    public HREmployeeRestController(HREmployeeService theHREmployeeService) {
+    public HREmployeeRestController(HREmployeeService theHREmployeeService, UserService userService) {
         hrEmployeeService = theHREmployeeService;
+        this.userService = userService;  
     }
 
     @GetMapping("/employees")
@@ -48,13 +52,20 @@ public class HREmployeeRestController {
 	}
     
     @PostMapping("/employees")
-    public HREmployee create(@RequestBody HREmployee theHREmployee) {
+    public HREmployee create(@RequestBody EmployeeDTO theEmployee) {
     	
-    	theHREmployee.setId(0);
+    	HREmployee theRealEmployee = new HREmployee();
     	
-        HREmployee dbHREmployee = hrEmployeeService.save(theHREmployee);
+    	theRealEmployee.setId(0);
+    	theRealEmployee.setName(theEmployee.getName());
+    	theRealEmployee.setLastName(theEmployee.getLastName());
+    	theRealEmployee.setEmail(theEmployee.getEmail());
+    	
+    	userService.createUser(theEmployee.getEmail(), theEmployee.getPass(), "HR");
+    	
+        HREmployee dbEmployee = hrEmployeeService.save(theRealEmployee);
 
-        return dbHREmployee;
+        return dbEmployee;
     }
     
     @PutMapping("/employees")

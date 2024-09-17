@@ -1,6 +1,6 @@
 <nav class="navbar">
   <ul>
-    <li><a routerLink="/createRequest">Create Request</a></li>
+    <li *ngIf="!getHR()"><a routerLink="/createRequest">Create Request</a></li>
     <li *ngIf="getHR()"><a routerLink="/requestList">Request List</a></li>
     <li *ngIf="getHR()">
       <a routerLink="/completedRequest">Completed Requests</a>
