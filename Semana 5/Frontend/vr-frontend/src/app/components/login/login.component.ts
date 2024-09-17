@@ -50,6 +50,10 @@ export class LoginComponent {
     );
   }
 
+  ngOnInit() {
+    this.sessionService.setCredentials(null);
+  }
+
   gotoHR() {
     this.router.navigateByUrl('/hr');
   }

@@ -1,0 +1,47 @@
+.vacation-requests-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.vacation-requests-container h1 {
+  font-size: 18px;
+  color: #333;
+}
+
+.vacation-requests-container p {
+  font-size: 14px;
+  color: #555;
+}
+
+.vacation-requests-container hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
+
+.dismiss-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dismiss-button-container button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dismiss-button-container button:hover {
+  background-color: #218838;
+}

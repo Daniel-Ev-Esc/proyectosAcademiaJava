@@ -1,0 +1,59 @@
+.vacation-requests-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.vacation-requests-container h1 {
+  font-size: 18px;
+  color: #333;
+}
+
+.vacation-requests-container p {
+  font-size: 14px;
+  color: #555;
+}
+
+.vacation-requests-container hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-container button.accept {
+  background-color: #28a745;
+  color: white;
+}
+
+.button-container button.reject {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button-container button.accept:hover {
+  background-color: #218838;
+}
+
+.button-container button.reject:hover {
+  background-color: #c82333;
+}

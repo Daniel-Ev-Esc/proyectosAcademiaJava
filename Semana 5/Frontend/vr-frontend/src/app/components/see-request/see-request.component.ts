@@ -44,7 +44,7 @@ export class SeeRequestComponent {
       });
   }
 
-  acceptRequest(id: number): void {
+  acceptRequest(id: number, reason: String): void {
     const credentials = this.sessionService.getCredentials();
 
     const httpOptions = {
@@ -66,9 +66,17 @@ export class SeeRequestComponent {
       .subscribe((data) => {
         console.log(data);
       });
+
+    // this.http
+    //   .post('http://localhost:9000/publish', {
+    //     message: `Your request with reason ${reason} was accepted`,
+    //   })
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //   });
   }
 
-  rejectRequest(id: number): void {
+  rejectRequest(id: number, reason: String): void {
     const credentials = this.sessionService.getCredentials();
 
     const httpOptions = {
@@ -89,5 +97,13 @@ export class SeeRequestComponent {
       .subscribe((data) => {
         console.log(data);
       });
+
+    // this.http
+    //   .post('http://localhost:9000/publish', {
+    //     message: `Your request with reason ${reason} was denied`,
+    //   })
+    // .subscribe((data) => {
+    //     console.log(data);
+    //   });
   }
 }

@@ -3,7 +3,7 @@
   <p>{{ item.startDate }} to {{ item.endDate }}</p>
   <p>Reason: {{ item.reason }}</p>
   <p>Status: {{ item.status }}</p>
-  <button (click)="acceptRequest(item.id!)">Accept</button>
-  <button (click)="rejectRequest(item.id!)">Reject</button>
+  <button (click)="acceptRequest(item.id!, item.reason)">Accept</button>
+  <button (click)="rejectRequest(item.id!, item.reason)">Reject</button>
   <hr />
 </div>

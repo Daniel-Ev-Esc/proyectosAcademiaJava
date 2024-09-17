@@ -21,3 +21,10 @@
     </button>
   </form>
 </div>
+
+<div *ngFor="let item of messages">
+  <button (click)="dismiss(item.messageId)">x</button>
+  <h1>{{ item.message }}</h1>
+  <p>{{ item.messageDate }}</p>
+  <hr />
+</div>

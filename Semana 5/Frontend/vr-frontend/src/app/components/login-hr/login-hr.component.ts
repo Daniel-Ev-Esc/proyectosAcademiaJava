@@ -50,4 +50,8 @@ export class LoginHrComponent {
       }
     );
   }
+
+  ngOnInit() {
+    this.sessionService.setCredentials(null);
+  }
 }

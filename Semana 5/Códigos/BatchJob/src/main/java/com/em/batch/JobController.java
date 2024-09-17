@@ -23,7 +23,7 @@ public class JobController {
     private Job job;
 
     @PostMapping("/completeRequest")
-    public void importCsvToDBJob() {
+    public void saveCompletedJob() {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("startAt", System.currentTimeMillis())
                 .toJobParameters();

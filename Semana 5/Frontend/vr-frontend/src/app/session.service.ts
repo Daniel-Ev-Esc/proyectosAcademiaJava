@@ -11,7 +11,7 @@ export class SessionService {
 
   constructor() {}
 
-  setCredentials(credentials: Credentials) {
+  setCredentials(credentials: Credentials | null) {
     this.credentials = credentials;
   }
 

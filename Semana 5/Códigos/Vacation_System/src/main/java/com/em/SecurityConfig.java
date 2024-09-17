@@ -46,6 +46,8 @@ public class SecurityConfig {
 	                 .requestMatchers(HttpMethod.GET, "/vacation-requests/**").hasRole("HR")
 	                 .requestMatchers(HttpMethod.POST, "/vacation-requests/create").hasRole("Employee")
 	                 .requestMatchers(HttpMethod.PUT, "/vacation-requests/**").hasRole("HR")
+	                 .requestMatchers(HttpMethod.GET, "/messages").hasRole("Employee")
+	                 .requestMatchers(HttpMethod.PUT, "/messages/dismiss/**").hasRole("Employee")
 	         )
 	         .httpBasic(Customizer.withDefaults())  // Use HTTP Basic authentication
 	         .csrf(csrf -> csrf.disable());  // Disable CSRF
